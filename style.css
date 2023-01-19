@@ -1,0 +1,24 @@
+.main {
+    padding: 20px;
+    margin: auto;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.heading {
+    text-align: center;
+}
+
+.text-input {
+    border: none;
+    font-size: 1.3rem;
+    width: 100%;
+}
+
+.tips {
+    color:tomato
+}
+
+.text-input:focus {
+    border: none;
+    outline: none;
+}
