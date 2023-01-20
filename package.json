@@ -1,0 +1,44 @@
+{
+  "name": "text-formatter",
+  "version": "1.0.0",
+  "description": "This application converts text typed in an input to different levels of heading. You can choose from h1 to h6 HTML heading elements to convert your text to. ## Built With",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest ",
+    "start": "webpack-dev-server --mode=development --hot",
+    "build": "webpack --progress --mode=production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HENRYKC24/Text-Formatter.git"
+  },
+  "keywords": [],
+  "author": "Henry Kc",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/HENRYKC24/Text-Formatter/issues"
+  },
+  "homepage": "https://github.com/HENRYKC24/Text-Formatter#readme",
+  "devDependencies": {
+    "@babel/core": "^7.20.12",
+    "@babel/plugin-transform-modules-commonjs": "^7.20.11",
+    "@babel/preset-env": "^7.20.2",
+    "babel-loader": "^9.1.2",
+    "css-loader": "^6.7.3",
+    "html-webpack-plugin": "^5.5.0",
+    "jest": "^29.3.1",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-server": "^4.11.1"
+  },
+  "babel": {
+    "env": {
+      "test": {
+        "plugins": [
+          "@babel/plugin-transform-modules-commonjs"
+        ]
+      }
+    }
+  }
+}
