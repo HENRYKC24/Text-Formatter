@@ -1,16 +1,19 @@
 const contentBox = document.querySelector(".contents");
 const textInput = document.querySelector(".text-input");
 const tipsContainer = document.querySelector(".tips");
+const searchBox = document.querySelector(".search-box");
 const searchResults = document.querySelector(".search-results");
+const keywordContainer = document.querySelector("span.keyword");
 
 const availableHeadingRanks = ["1", "2", "3", "4", "5", "6"];
 let chosenHeading = "0";
+let showSearchBox = false;
 
 const populateSearchResults = (param) => {
   searchResults.innerHTML = "";
   if (param === "all") {
     for (let i = 0; i < availableHeadingRanks.length; i++) {
-      const searchItem = `<div class="search-item">
+      const searchItems = `<div class="search-item">
       <div class="search-sub-item">
         <span class="icon">
           <i class="fa-solid fa-t"></i>
@@ -31,10 +34,25 @@ const populateSearchResults = (param) => {
       </div>
       <hr />
     </div>`;
-      searchResults.innerHTML += searchItem;
+      console.log(searchItems);
+      searchResults.innerHTML += searchItems;
+    }
+
+    const items = document.querySelectorAll(".search-item");
+
+    for (let i = 0; i < items.length; i++) {
+      items[i].addEventListener("click", () => {
+        chosenHeading = `${i + 1}`;
+        textInput.setAttribute("placeholder", `Heading ${i + 1}`);
+        textInput.value = "";
+        textInput.value = "";
+        textInput.setAttribute("maxlength", "");
+        textInput.focus();
+        searchBox.classList.remove("show-search-results");
+      });
     }
   } else {
-    const searchItem = `<div class="search-item">
+    const searchItems = `<div class="search-item">
       <div class="search-sub-item">
         <span class="icon">
           <i class="fa-solid fa-t"></i>
@@ -55,44 +73,80 @@ const populateSearchResults = (param) => {
       </div>
       <hr />
     </div>`;
-    searchResults.innerHTML = searchItem;
+
+    searchResults.innerHTML = searchItems;
     const items = document.querySelectorAll(".search-sub-item");
+
     for (let i = 0; i < items.length; i++) {
       items[i].addEventListener("click", () => {
         chosenHeading = param;
         textInput.setAttribute("placeholder", `Heading ${param}`);
         textInput.value = "";
-        tipsContainer.textContent = "";
+        textInput.focus();
+        textInput.value = "";
+        textInput.setAttribute("maxlength", "");
+        searchBox.classList.remove("show-search-results");
       });
     }
   }
 };
+
 textInput.addEventListener("keyup", (event) => {
-  populateSearchResults("3");
   if (tipsContainer.textContent !== "") {
     tipsContainer.textContent = "";
   }
+
   const value = event.target.value;
   const attrValue = textInput.getAttribute("placeholder");
+
   if (
-    event.key === "Enter" &&
+    value === "/" &&
+    attrValue[0] === "T"
+  ) {
+    searchBox.classList.add("show-search-results");
+    keywordContainer.textContent = "";
+    populateSearchResults("all");
+  }
+
+  if (
     value[0] === "/" &&
     availableHeadingRanks.includes(value[1]) &&
-    attrValue === "Type / for blocks, @ to link docs or people"
+    attrValue[0] === "T"
   ) {
-    textInput.setAttribute("placeholder", `Heading ${value[1]}`);
-    chosenHeading = value[1];
-    textInput.value = "";
+    searchBox.classList.add("show-search-results");
+    keywordContainer.textContent = value[1];
+    populateSearchResults(`${value[1]}`);
+  }
+
+  if (
+    value === "" &&
+    attrValue[0] === "T"
+  ) {
+    searchBox.classList.remove("show-search-results");
   }
 
   if (
     event.key === "Enter" &&
-    attrValue === "Type / for blocks, @ to link docs or people" &&
+    value[0] === "/" &&
+    availableHeadingRanks.includes(value[1]) &&
+    attrValue[0] === "T"
+  ) {
+    textInput.setAttribute("placeholder", `Heading ${value[1]}`);
+    chosenHeading = value[1];
+    textInput.value = "";
+    textInput.setAttribute("maxlength", "");
+    searchBox.classList.remove("show-search-results");
+  }
+
+  if (
+    event.key === "Enter" &&
+    attrValue[0] === "T" &&
     (value[0] !== "/" || !availableHeadingRanks.includes(value[1]))
   ) {
     tipsContainer.textContent =
       'Please enter "/" followed by any number from 1 to 6';
     textInput.value = "";
+    searchBox.classList.remove("show-search-results");
   }
 
   if (event.key === "Enter" && attrValue === "Heading " + chosenHeading) {
@@ -105,5 +159,10 @@ textInput.addEventListener("keyup", (event) => {
       "Type / for blocks, @ to link docs or people"
     );
     textInput.value = "";
+    textInput.setAttribute("maxlength", "2");
+  }
+
+  if (event.key === "Escape") {
+    searchBox.classList.remove("show-search-results");
   }
 });
