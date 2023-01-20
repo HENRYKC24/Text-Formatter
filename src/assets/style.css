@@ -1,0 +1,105 @@
+.main {
+    padding: 20px;
+    margin: auto;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+h1.heading {
+    text-align: center;
+}
+
+.text-input {
+    border: none;
+    font-size: 1.3rem;
+    width: 100%;
+}
+
+.tips {
+    color:tomato
+}
+
+.text-input:focus {
+    border: none;
+    outline: none;
+}
+
+.search-box {
+    max-width: 500px;
+    max-height: 600px;
+    padding: 10px;
+    border: 1px solid rgb(233, 230, 230);
+    box-shadow: 0 10px 20px rgb(153, 151, 151);
+    overflow-y: scroll;
+    border-radius: 10px;
+    margin-top: 10px;
+    display: none;
+}
+
+.show-search-results {
+    display: block;
+}
+
+span.keyword {
+    background-color: rgb(42, 42, 217);
+    color: white;
+    padding: 4px;
+    border-radius: 3px;
+}
+
+.keep-typing {
+    color: grey;
+}
+
+p.keyword {
+    color:rgb(71, 69, 69)
+}
+
+.search-sub-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    padding: 10px;
+}
+
+.search-sub-item:hover {
+    background-color: rgb(225, 227, 228);
+    cursor: pointer;
+}
+
+.icon {
+    font-size: 2rem;
+    color: grey;
+}
+
+.heading-shortcut > * {
+    margin: 0;
+    margin-left: 10px;
+}
+
+.heading-shortcut .heading {
+    margin-bottom: 5px;
+}
+
+.shortcut {
+    color:rgb(153, 151, 151)
+}
+
+.clear {
+    background-color: brown;
+    border: none;
+    color: white;
+    display: none;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    font-weight: 800;
+}
+
+.clear:active {
+    box-sizing: border-box;
+    border: 1px solid grey;
+    background-color: white;
+    color: brown;
+    padding: 4px;
+}
