@@ -32,6 +32,11 @@ h1.heading {
     overflow-y: scroll;
     border-radius: 10px;
     margin-top: 10px;
+    display: none;
+}
+
+.show-search-results {
+    display: block;
 }
 
 span.keyword {
