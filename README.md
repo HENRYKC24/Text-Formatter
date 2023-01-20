@@ -29,7 +29,7 @@ To get a local copy up and running follow these simple example steps in the comm
 
 [View Live!](https://bucolic-granita-f2d53b.netlify.app/)
 ## Run Tests
-//////////////////////////////////////////////////////////////////
+Run `npm test` from the command line.
 
 ## How To Use The App
 - You type the '/' character to start followed by any number denoting the level of heading you want to display the text with. Eg. '/1', '/2', ... '/6'. (The '@' linking character is not working at the moment).
