@@ -8,6 +8,17 @@
  * @param {Array<string>} param.headingRanks
  * @returns
  */
+const availableHeadingRanks = ['1', '2', '3', '4', '5', '6'];
+export const actions = {
+  shortcut: 'shortcut',
+  showAllBlockTypes: 'block types all',
+  showFilteredBlockTypes: 'block types filtered',
+  hideSearchResult: 'hide search result',
+  textMode: 'text mode',
+  blockCommandError: 'command error block',
+  reset: 'reset',
+  escape: 'escape',
+};
 
 export const getAction = ({
     keyPressed,
@@ -44,13 +55,4 @@ export const getAction = ({
     }
   };
 
-  export const actions = {
-    shortcut: 'shortcut',
-    showAllBlockTypes: 'block types all',
-    showFilteredBlockTypes: 'block types filtered',
-    hideSearchResult: 'hide search result',
-    textMode: 'text mode',
-    blockCommandError: 'command error block',
-    reset: 'reset',
-    escape: 'escape',
-  };
+  
