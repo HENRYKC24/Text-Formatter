@@ -34,7 +34,6 @@ const populateSearchResults = (param) => {
       </div>
       <hr />
     </div>`;
-      console.log(searchItems);
       searchResults.innerHTML += searchItems;
     }
 
@@ -46,7 +45,6 @@ const populateSearchResults = (param) => {
         textInput.setAttribute("placeholder", `Heading ${i + 1}`);
         textInput.value = "";
         textInput.value = "";
-        textInput.setAttribute("maxlength", "");
         textInput.focus();
         searchBox.classList.remove("show-search-results");
       });
@@ -84,7 +82,6 @@ const populateSearchResults = (param) => {
         textInput.value = "";
         textInput.focus();
         textInput.value = "";
-        textInput.setAttribute("maxlength", "");
         searchBox.classList.remove("show-search-results");
       });
     }
@@ -97,7 +94,24 @@ textInput.addEventListener("keyup", (event) => {
   }
 
   const value = event.target.value;
+  const keyPressed = event.key;
   const attrValue = textInput.getAttribute("placeholder");
+  console.log(keyPressed);
+  if (keyPressed === " " && attrValue[0] === "T") {
+    const val = value.trim();
+    const prev = val.slice(0, -1);
+    const last = val.slice(-1);
+    if (availableHeadingRanks.includes(last) && (prev === '>>#' || '#' || '/>>#' || '/#')) {
+      console.log('That is a shortcut');
+      chosenHeading = last;
+        textInput.setAttribute("placeholder", `Heading ${last}`);
+        textInput.value = "";
+        textInput.focus();
+        textInput.value = "";
+        searchBox.classList.remove("show-search-results");
+    }
+  }
+
 
   if (
     value === "/" &&
@@ -126,7 +140,7 @@ textInput.addEventListener("keyup", (event) => {
   }
 
   if (
-    event.key === "Enter" &&
+    keyPressed === "Enter" &&
     value[0] === "/" &&
     availableHeadingRanks.includes(value[1]) &&
     attrValue[0] === "T"
@@ -134,12 +148,11 @@ textInput.addEventListener("keyup", (event) => {
     textInput.setAttribute("placeholder", `Heading ${value[1]}`);
     chosenHeading = value[1];
     textInput.value = "";
-    textInput.setAttribute("maxlength", "");
     searchBox.classList.remove("show-search-results");
   }
 
   if (
-    event.key === "Enter" &&
+    keyPressed === "Enter" &&
     attrValue[0] === "T" &&
     (value[0] !== "/" || !availableHeadingRanks.includes(value[1]))
   ) {
@@ -149,7 +162,7 @@ textInput.addEventListener("keyup", (event) => {
     searchBox.classList.remove("show-search-results");
   }
 
-  if (event.key === "Enter" && attrValue === "Heading " + chosenHeading) {
+  if (keyPressed === "Enter" && attrValue === "Heading " + chosenHeading) {
     const element = `h${chosenHeading}`;
     const heading = document.createElement(element);
     heading.textContent = value;
@@ -159,10 +172,9 @@ textInput.addEventListener("keyup", (event) => {
       "Type / for blocks, @ to link docs or people"
     );
     textInput.value = "";
-    textInput.setAttribute("maxlength", "2");
   }
 
-  if (event.key === "Escape") {
+  if (keyPressed === "Escape") {
     searchBox.classList.remove("show-search-results");
   }
 });
