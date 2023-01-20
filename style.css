@@ -54,10 +54,6 @@ p.keyword {
     color:rgb(71, 69, 69)
 }
 
-.search-item {
-
-}
-
 .search-sub-item {
     display: flex;
     align-items: center;
