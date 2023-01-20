@@ -83,3 +83,23 @@ p.keyword {
 .shortcut {
     color:rgb(153, 151, 151)
 }
+
+.clear {
+    background-color: brown;
+    border: none;
+    color: white;
+    display: none;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    font-weight: 800;
+}
+
+.clear:active {
+    box-sizing: border-box;
+    border: 1px solid grey;
+    background-color: white;
+    color: brown;
+    padding: 4px;
+}
